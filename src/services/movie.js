@@ -12,13 +12,13 @@ async function getMovieById(id) {
 
 async function createMovie(entryData, authorId) {
   const newMovie = new Movie({
-    title: entryData.title,
-    genre: entryData.genre,
-    director: entryData.director,
-    year: Number(entryData.year),
-    imageURL: entryData.imageURL,
-    rating: Number(entryData.rating),
-    description: entryData.description,
+    title: entryData.title.trim(),
+    genre: entryData.genre.trim(),
+    director: entryData.director.trim(),
+    year: Number(entryData.year).trim(),
+    imageURL: entryData.imageURL.trim(),
+    rating: Number(entryData.rating).trim(),
+    description: entryData.description.trim(),
     author: authorId,
   });
   await newMovie.save();

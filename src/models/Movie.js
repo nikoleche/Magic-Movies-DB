@@ -4,14 +4,20 @@ const movieSchema = new Schema({
   title: {
     type: String,
     required: true,
+    minLength: [5, "Longer title required"],
+    match: [/^[a-z0-9 ]+$/gi, "Title must be alphanumeric"],
   },
   genre: {
     type: String,
     required: true,
+    minLength: 5,
+    match: /^[a-z0-9 ]+$/gi,
   },
   director: {
     type: String,
     required: true,
+    minLength: 5,
+    match: /^[a-z0-9 ]+$/gi,
   },
   year: {
     type: Number,
@@ -28,12 +34,13 @@ const movieSchema = new Schema({
   description: {
     type: String,
     required: true,
-    maxLength: 1000,
+    minLength: 20,
+    match: /^[a-z0-9 ]+$/gi,
   },
   imageURL: {
     type: String,
     required: true,
-    regexp: /^https?:\/\/.+/,
+    match: /^https?:\/\/.+/,
   },
   cast: {
     type: [Types.ObjectId],
